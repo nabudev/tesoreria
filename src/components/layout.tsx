@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Sidebar } from "./sidebar"
-import { DashboardContent } from "./dashboard-content"
+import { DashboardContent } from "../app/saldos/page"
 
 export default function Layout() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)

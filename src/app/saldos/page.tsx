@@ -34,7 +34,7 @@ export default function DashboardPage() {
 
       <div className="flex justify-between mt-4">
         <div className="flex gap-4">
-          <Button variant="secondary">Download</Button>
+          <Button variant="secondary">Descargar</Button>
           <div className="flex gap-2">
             <Input type="text" value="$20,000" className="w-24 bg-white" readOnly />
             <Input type="text" value="$50,000" className="w-24 bg-white" readOnly />

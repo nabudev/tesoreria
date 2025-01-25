@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Sidebar } from "./sidebar"
-import { DashboardContent } from "../app/saldos/page"
+import { Sidebar } from "@/components/sidebar"
+import  DashboardContent  from "@/app/saldos/page"
 
 export default function Layout() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)

@@ -1,31 +1,27 @@
 "use client"
 
 import { useState } from "react"
-import { CompanyStats } from "@/components/company-stats"
-import { IncomeFilters } from "@/components/income-filters"
-import { IncomeTable } from "@/components/income-table"
+import { CompanyStats } from "./company-stats"
+import { IncomeFilters } from "./income-filters"
+import { IncomeTable } from "./income-table"
 import { Button } from "@/components/ui/button"
-import { Sidebar } from "@/components/sidebar"
-import { ManualIncomeModal } from "@/components/manual-income-modal"
-import { IncomeDetailModal } from "@/components/income-detail-modal"
-import { AddCompanyModal } from "@/components/add-company-modal"
-import { CompaniesListModal } from "@/components/companies-list-modal"
+import { Sidebar } from "../sidebar"
+import { ManualIncomeModal } from "../modals/manual-income-modal"
+import { IncomeRecordModal } from "../modals/income-record-modal"
+import { AddCompanyModal } from "../modals/add-company-modal"
+import { CompaniesListModal } from "../modals/companies-list-modal"
 
-export default function IncomePage() {
+export function IncomeLayout() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
   const [isManualIncomeModalOpen, setIsManualIncomeModalOpen] = useState(false)
-  const [isIncomeDetailModalOpen, setIsIncomeDetailModalOpen] = useState(false)
+  const [isIncomeRecordModalOpen, setIsIncomeRecordModalOpen] = useState(false)
   const [isAddCompanyModalOpen, setIsAddCompanyModalOpen] = useState(false)
   const [isCompaniesListModalOpen, setIsCompaniesListModalOpen] = useState(false)
   const [selectedIncome, setSelectedIncome] = useState<any>(null)
 
   const handleRowClick = (income: any) => {
     setSelectedIncome(income)
-    setIsIncomeDetailModalOpen(true)
-  }
-
-  const handleConfigClick = () => {
-    setIsAddCompanyModalOpen(true)
+    setIsIncomeRecordModalOpen(true)
   }
 
   return (
@@ -34,7 +30,6 @@ export default function IncomePage() {
         isExpanded={isSidebarExpanded}
         onMouseEnter={() => setIsSidebarExpanded(true)}
         onMouseLeave={() => setIsSidebarExpanded(false)}
-        onConfigClick={handleConfigClick}
       />
       <div className="flex-1 p-6">
         <div className="flex justify-between items-center mb-6">
@@ -72,10 +67,10 @@ export default function IncomePage() {
 
       <ManualIncomeModal isOpen={isManualIncomeModalOpen} onClose={() => setIsManualIncomeModalOpen(false)} />
 
-      <IncomeDetailModal
-        isOpen={isIncomeDetailModalOpen}
-        onClose={() => setIsIncomeDetailModalOpen(false)}
-        income={selectedIncome}
+      <IncomeRecordModal
+        isOpen={isIncomeRecordModalOpen}
+        onClose={() => setIsIncomeRecordModalOpen(false)}
+        data={selectedIncome}
       />
 
       <AddCompanyModal isOpen={isAddCompanyModalOpen} onClose={() => setIsAddCompanyModalOpen(false)} />

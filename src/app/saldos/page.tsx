@@ -1,30 +1,32 @@
 "use client"
 
 import { useState } from "react"
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
+import { Search, Settings } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { BalanceCards } from "@/components/balance-cards"
 import { BalanceTable } from "@/components/balance-table"
 import { SearchModal } from "@/components/search-modal"
 import { NewEntryModal } from "@/components/new-entry-modal"
 
-export default function DashboardContent() {
+export default function DashboardPage() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)
   const [isNewEntryModalOpen, setIsNewEntryModalOpen] = useState(false)
 
   return (
-    <div className="flex-1 p-6">
+    <div className="flex-1 p-6 bg-[#1E88E5]">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-white">SALDOS ACTUALES</h1>
-        <Button
-          variant="secondary"
-          className="bg-[#ADD8E6] text-black hover:bg-[#99CCE6]"
-          onClick={() => setIsSearchModalOpen(true)}
-        >
-          <Search className="w-4 h-4 mr-2" />
-          BUSCAR
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            variant="secondary"
+            className="bg-[#ADD8E6] text-black hover:bg-[#99CCE6]"
+            onClick={() => setIsSearchModalOpen(true)}
+          >
+            <Search className="w-4 h-4 mr-2" />
+            BUSCAR
+          </Button>
+        </div>
       </div>
 
       <BalanceCards />
@@ -44,7 +46,6 @@ export default function DashboardContent() {
       </div>
 
       <SearchModal isOpen={isSearchModalOpen} onClose={() => setIsSearchModalOpen(false)} />
-
       <NewEntryModal isOpen={isNewEntryModalOpen} onClose={() => setIsNewEntryModalOpen(false)} />
     </div>
   )

@@ -28,12 +28,11 @@ export function NewEntryModal({ isOpen, onClose }: NewEntryModalProps) {
   ])
 
   const totalDebe = entries.reduce((sum, entry) => (entry.type.includes("Debe") ? sum + entry.amount : sum), 0)
-
   const totalHaber = entries.reduce((sum, entry) => (entry.type.includes("Haber") ? sum + entry.amount : sum), 0)
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="min-w-[600px]">
         <DialogHeader>
           <div className="flex justify-between items-center">
             <DialogTitle>NUEVO ASIENTO</DialogTitle>

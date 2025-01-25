@@ -4,10 +4,10 @@ import { useState } from "react"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { BalanceCards } from "./balance-cards"
-import { BalanceTable } from "./balance-table"
-import { SearchModal } from "./search-modal"
-import { NewEntryModal } from "./new-entry-modal"
+import { BalanceCards } from "@/components/balance-cards"
+import { BalanceTable } from "@/components/balance-table"
+import { SearchModal } from "@/components/search-modal"
+import { NewEntryModal } from "@/components/new-entry-modal"
 
 export function DashboardContent() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false)

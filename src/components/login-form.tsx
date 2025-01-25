@@ -12,9 +12,11 @@ export default function LoginForm() {
   const router = useRouter()
   const [entity, setEntity] = useState("")
 
-  const handleLogin = () => {
-    router.push("/saldos")
-  }
+  const handleLogin = (event: React.FormEvent) => {
+    event.preventDefault(); // Prevenir que el formulario se envíe automáticamente
+    router.push("/saldos");
+  };
+  
 
 
 
@@ -47,7 +49,7 @@ export default function LoginForm() {
             </div>
 
             {/* Login Form */}
-            <form className="space-y-4">
+            <form className="space-y-4"  onSubmit={handleLogin}>
               <Select value={entity} onValueChange={setEntity}>
                 <SelectTrigger className="w-full h-10 border rounded">
                   <SelectValue placeholder="Entidad" />
@@ -63,9 +65,9 @@ export default function LoginForm() {
 
               <Input type="password" placeholder="Contraseña" className="h-10" />
 
-              <Button className="w-full bg-[#1E88E5] hover:bg-[#1976D2]" onClick={handleLogin} disabled={!entity}>
-            Acceder
-          </Button>
+              <Button type="submit" className="w-full bg-[#1E88E5] hover:bg-[#1976D2]" disabled={!entity}>
+                Acceder
+              </Button>
 
               <div className="text-center">
                 <Link href="/forgot-password" className="text-[#1E88E5] text-sm hover:underline">

@@ -1,15 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import { CompanyStats } from "./company-stats"
-import { IncomeFilters } from "./income-filters"
-import { IncomeTable } from "./income-table"
+import { CompanyStats } from "@/components/company-stats"
+import { IncomeFilters } from "@/components/income-filters"
+import { IncomeTable } from "@/components/income-table"
 import { Button } from "@/components/ui/button"
-import { Sidebar } from "../sidebar"
-import { ManualIncomeModal } from "../modals/manual-income-modal"
-import { IncomeRecordModal } from "../modals/income-record-modal"
-import { AddCompanyModal } from "../modals/add-company-modal"
-import { CompaniesListModal } from "../modals/companies-list-modal"
+import { Sidebar } from "@/components/sidebar"
+import { ManualIncomeModal } from "@/components/manual-income-modal"
+import { IncomeRecordModal } from "@/components/income-record-modal"
+import { AddCompanyModal } from "@/components/add-company-modal"
+import { CompaniesListModal } from "@/components/companies-list-modal"
 
 export function IncomeLayout() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)

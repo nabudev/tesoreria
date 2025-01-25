@@ -18,7 +18,7 @@ interface ManualIncomeModalProps {
 }
 
 export function ManualIncomeModal({ isOpen, onClose }: ManualIncomeModalProps) {
-  const [checks, setChecks] = useState<Check[]>([
+  const [checks] = useState<Check[]>([
     { bank: "Nación", number: "98-1254-66475", amount: "$500.0000" },
     { bank: "Nación", number: "98-1254-66475", amount: "$500.0000" },
   ])

@@ -4,33 +4,37 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
+interface Income {
+  fecha: string;
+  razonSocial: string;
+  cuit: string;
+  periodo: string;
+  monto: string;
+}
+
 interface IncomeRecordModalProps {
-  isOpen: boolean
-  onClose: () => void
-  data?: {
-    fecha: string
-    razonSocial: string
-    cuit: string
-    periodo: string
-    monto: string
-  }
+  isOpen: boolean;
+  onClose: () => void;
+  data: Income | undefined;
 }
 
 export function IncomeRecordModal({ isOpen, onClose, data }: IncomeRecordModalProps) {
+  if (!data) return null;
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="flex justify-between items-center">
             <DialogTitle>INFORME DE INGRESO</DialogTitle>
-            <Input type="date" className="w-32" value={data?.fecha} readOnly />
+            <Input type="date" className="w-32" value={data.fecha} readOnly />
           </div>
         </DialogHeader>
 
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            <Input placeholder="RAZÓN SOCIAL" value={data?.razonSocial} readOnly />
-            <Input placeholder="CUIT" value={data?.cuit} readOnly />
+            <Input placeholder="RAZÓN SOCIAL" value={data.razonSocial} readOnly />
+            <Input placeholder="CUIT" value={data.cuit} readOnly />
           </div>
 
           <div className="w-full bg-green-100 rounded-full h-2.5">
@@ -40,9 +44,13 @@ export function IncomeRecordModal({ isOpen, onClose, data }: IncomeRecordModalPr
           <div>
             <h3 className="font-medium mb-2">EXPLOTAR INGRESO</h3>
             <div className="space-y-2 max-h-48 overflow-y-auto">
-              {Array.from({ length: 5 }).map((_, index) => (
+              <div className="grid grid-cols-2 gap-4">
+                <Input defaultValue={data.periodo} />
+                <Input defaultValue={data.monto} />
+              </div>
+              {Array.from({ length: 4 }).map((_, index) => (
                 <div key={index} className="grid grid-cols-2 gap-4">
-                  <Input defaultValue="Enero-2025" />
+                  <Input placeholder="Periodo" />
                   <Input placeholder="$" />
                 </div>
               ))}
@@ -61,4 +69,3 @@ export function IncomeRecordModal({ isOpen, onClose, data }: IncomeRecordModalPr
     </Dialog>
   )
 }
-

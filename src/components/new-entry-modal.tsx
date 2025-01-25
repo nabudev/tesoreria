@@ -19,7 +19,7 @@ interface Entry {
 }
 
 export function NewEntryModal({ isOpen, onClose }: NewEntryModalProps) {
-  const [entries, setEntries] = useState<Entry[]>([
+  const [entries] = useState<Entry[]>([
     { type: "FONDO FIJO (Debe)", description: "", amount: 350 },
     { type: "A CAJA (Haber)", description: "", amount: 350 },
     { type: "RECAUDADORA (Debe)", description: "", amount: 350 },
@@ -90,4 +90,3 @@ export function NewEntryModal({ isOpen, onClose }: NewEntryModalProps) {
     </Dialog>
   )
 }
-

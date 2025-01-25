@@ -10,6 +10,15 @@ import { ManualIncomeModal } from "@/components/manual-income-modal"
 import { IncomeRecordModal } from "@/components/income-record-modal"
 import { AddCompanyModal } from "@/components/add-company-modal"
 import { CompaniesListModal } from "@/components/companies-list-modal"
+import { Settings } from 'lucide-react'
+
+interface Income {
+  fecha: string;
+  razonSocial: string;
+  cuit: string;
+  periodo: string;
+  monto: string;
+}
 
 export function IncomeLayout() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
@@ -17,9 +26,9 @@ export function IncomeLayout() {
   const [isIncomeRecordModalOpen, setIsIncomeRecordModalOpen] = useState(false)
   const [isAddCompanyModalOpen, setIsAddCompanyModalOpen] = useState(false)
   const [isCompaniesListModalOpen, setIsCompaniesListModalOpen] = useState(false)
-  const [selectedIncome, setSelectedIncome] = useState<any>(null)
+  const [selectedIncome, setSelectedIncome] = useState<Income | undefined>(undefined)
 
-  const handleRowClick = (income: any) => {
+  const handleRowClick = (income: Income) => {
     setSelectedIncome(income)
     setIsIncomeRecordModalOpen(true)
   }
@@ -34,6 +43,14 @@ export function IncomeLayout() {
       <div className="flex-1 p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-white">EMPRESAS</h1>
+          <Button
+            variant="secondary"
+            className="bg-[#ADD8E6] text-black hover:bg-[#99CCE6]"
+            onClick={() => setIsAddCompanyModalOpen(true)}
+          >
+            <Settings className="w-4 h-4 mr-2" />
+            CONFIGURAR
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -79,4 +96,3 @@ export function IncomeLayout() {
     </div>
   )
 }
-

@@ -11,15 +11,23 @@ import { IncomeDetailModal } from "@/components/income-detail-modal"
 import { AddCompanyModal } from "@/components/add-company-modal"
 import { CompaniesListModal } from "@/components/companies-list-modal"
 
+interface Income {
+  fecha: string;
+  razonSocial: string;
+  cuit: string;
+  periodo: string;
+  monto: string;
+}
+
 export default function IncomePage() {
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false)
   const [isManualIncomeModalOpen, setIsManualIncomeModalOpen] = useState(false)
   const [isIncomeDetailModalOpen, setIsIncomeDetailModalOpen] = useState(false)
   const [isAddCompanyModalOpen, setIsAddCompanyModalOpen] = useState(false)
   const [isCompaniesListModalOpen, setIsCompaniesListModalOpen] = useState(false)
-  const [selectedIncome, setSelectedIncome] = useState<any>(null)
+  const [selectedIncome, setSelectedIncome] = useState<Income | null>(null)
 
-  const handleRowClick = (income: any) => {
+  const handleRowClick = (income: Income) => {
     setSelectedIncome(income)
     setIsIncomeDetailModalOpen(true)
   }
@@ -84,4 +92,3 @@ export default function IncomePage() {
     </div>
   )
 }
-

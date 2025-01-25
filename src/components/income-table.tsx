@@ -1,45 +1,53 @@
 "use client"
 
+interface Income {
+  fecha: string;
+  razonSocial: string;
+  cuit: string;
+  periodo: string;
+  monto: string;
+}
+
 interface IncomeTableProps {
-  onRowClick: (income: any) => void
+  onRowClick: (income: Income) => void
 }
 
 export function IncomeTable({ onRowClick }: IncomeTableProps) {
-  const data = [
+  const data: Income[] = [
     {
       fecha: "09/01/2025",
-      empresa: "El Hauar",
+      razonSocial: "El Hauar",
+      cuit: "30-12345678-9",
       periodo: "Ene - 2025",
-      importe: "$1.000.000",
-      origen: "Transf",
+      monto: "$1.000.000",
     },
     {
       fecha: "09/01/2025",
-      empresa: "Nautica Bigua",
+      razonSocial: "Nautica Bigua",
+      cuit: "30-98765432-1",
       periodo: "Dic - 2024",
-      importe: "$547.548",
-      origen: "Pag. Fac",
+      monto: "$547.548",
     },
     {
       fecha: "09/01/2025",
-      empresa: "Osernm",
+      razonSocial: "Osernm",
+      cuit: "30-11111111-1",
       periodo: "-----",
-      importe: "$175.086,96",
-      origen: "Cheque",
+      monto: "$175.086,96",
     },
     {
       fecha: "10/01/2025",
-      empresa: "Yoppolo y Cachiareli",
+      razonSocial: "Yoppolo y Cachiareli",
+      cuit: "30-22222222-2",
       periodo: "May - 2024",
-      importe: "$254.698,05",
-      origen: "Caja",
+      monto: "$254.698,05",
     },
     {
       fecha: "10/01/2025",
-      empresa: "Huxley",
+      razonSocial: "Huxley",
+      cuit: "30-33333333-3",
       periodo: "Nov - 2024",
-      importe: "$10.000",
-      origen: "Transf",
+      monto: "$10.000",
     },
   ]
 
@@ -52,7 +60,6 @@ export function IncomeTable({ onRowClick }: IncomeTableProps) {
             <th className="px-4 py-2 text-left">EMPRESA/CUIT</th>
             <th className="px-4 py-2 text-left">PERIODO</th>
             <th className="px-4 py-2 text-left">IMPORTE</th>
-            <th className="px-4 py-2 text-left">ORIGEN</th>
           </tr>
         </thead>
         <tbody>
@@ -63,10 +70,9 @@ export function IncomeTable({ onRowClick }: IncomeTableProps) {
               onClick={() => onRowClick(row)}
             >
               <td className="px-4 py-2">{row.fecha}</td>
-              <td className="px-4 py-2">{row.empresa}</td>
+              <td className="px-4 py-2">{row.razonSocial} ({row.cuit})</td>
               <td className="px-4 py-2">{row.periodo}</td>
-              <td className="px-4 py-2">{row.importe}</td>
-              <td className="px-4 py-2">{row.origen}</td>
+              <td className="px-4 py-2">{row.monto}</td>
             </tr>
           ))}
         </tbody>
@@ -74,4 +80,3 @@ export function IncomeTable({ onRowClick }: IncomeTableProps) {
     </div>
   )
 }
-

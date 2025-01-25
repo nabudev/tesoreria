@@ -9,7 +9,7 @@ interface SidebarProps {
   isExpanded: boolean
   onMouseEnter: () => void
   onMouseLeave: () => void
-  onConfigClick: () => void
+  onConfigClick?: () => void
 }
 
 export function Sidebar({ isExpanded, onMouseEnter, onMouseLeave, onConfigClick }: SidebarProps) {

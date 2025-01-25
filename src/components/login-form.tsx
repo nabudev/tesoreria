@@ -2,11 +2,22 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
 export default function LoginForm() {
+  const router = useRouter()
+  const [entity, setEntity] = useState("")
+
+  const handleLogin = () => {
+    router.push("/saldos")
+  }
+
+
+
   return (
     <div className="min-h-screen bg-[#1E88E5]">
       {/* Header */}
@@ -37,7 +48,7 @@ export default function LoginForm() {
 
             {/* Login Form */}
             <form className="space-y-4">
-              <Select>
+              <Select value={entity} onValueChange={setEntity}>
                 <SelectTrigger className="w-full h-10 border rounded">
                   <SelectValue placeholder="Entidad" />
                 </SelectTrigger>
@@ -52,9 +63,9 @@ export default function LoginForm() {
 
               <Input type="password" placeholder="Contraseña" className="h-10" />
 
-              <Button type="submit" className="w-full bg-[#1E88E5] hover:bg-[#1976D2] text-white h-10">
-                Acceder
-              </Button>
+              <Button className="w-full bg-[#1E88E5] hover:bg-[#1976D2]" onClick={handleLogin} disabled={!entity}>
+            Acceder
+          </Button>
 
               <div className="text-center">
                 <Link href="/forgot-password" className="text-[#1E88E5] text-sm hover:underline">
